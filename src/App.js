@@ -1,7 +1,8 @@
 // import logo from './logo.svg';
 // import './App.css';
 import { BiArchive } from "react-icons/bi"
-import cocktailInfo from "./components/AppointmentInfo"
+import CocktailInfo from "./components/CocktailInfo"
+import { useState, useEffect } from "react"
 // import appointmentList from "./data.json"
 
 let cocktails = []
@@ -29,21 +30,28 @@ async function getRandomCocktail() {
     instructions: cocktailRaw.strInstructions
   }
   cocktails.push(cocktail)
-  // console.log(cocktails)
+  console.log(cocktails)
 }
 
 
-
 function App() {
+  let [toggleButton, setToggleButton] = useState(false)
+  useEffect(() => {
+    const randomCocktailBtn = document.querySelector('#random-cocktail-btn')
+    randomCocktailBtn.addEventListener('click', getRandomCocktail)
+  })
   return (
     <div className="App container mx-auto mt-3 font-thin">
       <h1 className="text-5xl"><BiArchive className="inline-block text-red-400 align-top"/>Hello World</h1>
-      <div><button onClick={getRandomCocktail} type="button" className="p-1.5 mr-1.5 mt-1 rounded text-white bg-gray-500 hover:bg-red-700">Get a Cocktail</button></div>
+      <div><button id="random-cocktail-btn" type="button" onClick={() => {setToggleButton(!toggleButton)}}
+        className={`p-1.5 mr-1.5 mt-1 rounded text-white hover:bg-red-700 ${toggleButton ? 'bg-blue-500' : 'bg-gray-500'}`}>
+        Get a Cocktail
+        </button></div>
       <ul className="divide-y divide-gray-200">
 
         {cocktails
           .map(cocktail => (
-            <cocktailInfo key={cocktail.id}
+            <CocktailInfo key={cocktail.id}
             cocktail={cocktail}
             />
           ))
@@ -55,3 +63,6 @@ function App() {
 }
 
 export default App;
+
+
+

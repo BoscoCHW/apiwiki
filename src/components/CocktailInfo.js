@@ -1,6 +1,6 @@
 import { BiTrash } from "react-icons/bi"
 
-const cocktailInfo = ({ cocktail }) => {
+const CocktailInfo = ({ cocktail }) => {
   return (
     <li className="px-3 py-3 flex items-start">
       <button type="button"
@@ -18,4 +18,4 @@ const cocktailInfo = ({ cocktail }) => {
   )
 }
 
-export default cocktailInfo
+export default CocktailInfo
