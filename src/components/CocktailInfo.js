@@ -11,7 +11,7 @@ const CocktailInfo = ({ cocktail }) => {
           <span className="flex-none font-medium text-2xl text-blue-500">{cocktail.name}</span>
           <span className="flex-grow text-right">{cocktail.id}</span>
         </div>
-        <div><b className="font-bold text-blue-500">Owner:</b> {cocktail.ingredients}</div>
+        <div><b className="font-bold text-blue-500">Ingredients:</b> {cocktail.ingredients}</div>
         <div className="leading-tight">{cocktail.instructions}</div>
       </div>
     </li>
